@@ -1,0 +1,197 @@
+TITRE DU CHAPITRE : Structures en C
+
+Sommaire :
+
+• Déclaration d'une structure
+• Accès aux membres d'une structure
+• Utilisation des structures
+• Structures imbriquées
+• Pointeurs sur structures
+• Définition des structures anonymes
+• Utilisation des structures anonymes imbriquées
+• Avantages et limitations des structures anonymes
+
+
+1_ Déclaration d'une structure :
+
+    Une structure est un moyen de regrouper plusieurs variables de types différents dans une entité unique.
+    Elle est définie à l'aide du mot-clé "struct".
+
+    Exemple :
+    ```
+            struct Etudiant {
+                char nom[20];
+                int age;
+                float moyenne;
+            };
+    ```
+
+    Dans ce cas là, pour la déclaration de la structure "etudiant1", il faudra utiliser l'appel "struct Etudiant" juste avant.
+
+    Exemple :
+    ```
+            struct Etudiant etudiant1;
+    ```
+
+    Pour régler ce problème, il est possible d'utiliser la fonction "typedef" afin de donner un nom de variable à la structure.
+    Pour ça, il y a 2 façons de faire.
+
+    Exemple :
+    ```
+            typedef struct Etudiant_s {
+                char nom[20];
+                int age;
+                float moyenne;
+            } Etudiant;
+    ```
+
+    Dans ce cas là, après la définition de la structure, il n'y aura pas de ";" et on donnera directement le nom de la variable.
+
+
+    Exemple :
+    ```
+            struct Etudiant_s {
+                char nom[20];
+                int age;
+                float moyenne;
+            }; typedef struct Etudiant_s Etudiant;
+    ```
+
+    Dans ce cas, après la définition de la structure, il y aura un ";" et ensuite seulement il y aura la déclaration
+    de la variable "Etudiant".
+
+    Ainsi pour la déclaration de la structure "etudiant1", on utilisera le type de variable "Etudiant".
+
+    Exemple :
+    ```
+            Etudiant etudiant1;
+    ```
+
+
+2_ Accès aux membres d'une structure :
+
+    Les membres d'une structure sont accessible à l'aide du "." (point).
+
+    Exemple :
+    ```c
+            Etudiant etudiant1;
+            etudiant1.age = 20;
+            strcpy(etudiant1.nom, "John Doe");
+            etudiant1.moyenne = 16.5;
+    ```
+
+
+3_ Utilisation des structures :
+
+    Les structures peuvent être utilisées pour créer des objets complexes contenant plusieurs informations,
+    par exemple des coordonnées (point x, point y), ou bien les informations personnelles (nom, age, adresse, ...).
+
+    Exemple :
+    ```
+            struct Etudiant_s {
+                char nom[20];
+                int age;
+                float moyenne;
+            }; typedef struct Etudiant_s Etudiant;
+
+            Etudiant etudiant1;
+            strcpy(etudiant1.nom, "John Doe");
+            etudiant1.age = 20;
+            etudiant1.moyenne = 16.5;
+    ```
+
+
+4_ Structures imbriquées 
+
+    Les structures peuvent être imbriquées les unes dans les autres, ce qui permet de représenter des données complexes.
+
+    Exemple :
+        ```
+                typedef struct Date_s {
+                    int jour;
+                    int mois;
+                    int annee;
+                } Date;
+
+                struct Personne {
+                    char nom[20];
+                    Date naissance;
+                };
+        ```
+
+
+5_ Pointeurs sur structures :
+
+    Les pointeurs peuvent être utilisés pour manipuler des structures en référence plutôt qu'en copie.
+
+    Exemple :
+        ```
+                struct Etudiant {
+                    char nom[20];
+                    int age;
+                    float moyenne;
+                };
+
+                struct Etudiant *ptrEtudiant;
+                ptrEtudiant = malloc(sizeof(struct Etudiant));
+                ptrEtudiant->age = 20;
+                strcpy(ptrEtudiant->nom, "John Doe");
+                ptrEtudiant->moyenne = 16.5;
+        ```
+
+
+6_ Définition des structures anonymes :
+
+    Les structures anonymes sont des structures déclarées sans nom directement dans une autre structure
+    ou dans un bloc de code. Elles sont utilisées pour regrouper des données connexes de manière concise et organisée.
+
+        Exemple :
+            ```
+                    struct Personne {
+                        char nom[20];
+                        int age;
+                        struct {
+                            int jour;
+                            int mois;
+                            int annee;
+                        } dateNaissance;
+            };
+            ```
+
+
+7_ Utilisation des structures anonymes imbriquées :
+
+    Les structures anonymes imbriquées sont déclarées à l'intérieur d'une autre structure
+    et peuvent être utilisées comme membres de cette structure. Elles permettent de regrouper des
+    données spécifiques à un certain contexte.
+
+    Exemple :
+        ```
+                struct Personne personne1;
+                personne1.dateNaissance.jour = 10;
+                personne1.dateNaissance.mois = 5;
+                personne1.dateNaissance.annee = 1990;
+        ```
+
+
+8_ Avantages et limitations des structures anonymes :
+
+    Avantages :
+        - Permettent de regrouper des données connexes de manière claire et organisée.
+        - Évitent la pollution de l'espace global en évitant de nommer chaque structure imbriquée.
+
+    Limitations :
+        - Les membres de la structure anonyme ne sont pas directement accessibles en dehors de la structure qui les contient.
+        - L'utilisation de structures anonymes peut rendre le code moins lisible s'il est utilisé de manière excessive.
+
+
+Conclusion :
+
+    Les structures en C permettent de regrouper des variables de types différents pour représenter des entités complexes.
+    Elles offrent une flexibilité et une organisation des données. La déclaration, l'accès aux membres,
+    l'utilisation des structures imbriquées et l'utilisation de pointeurs sur structures sont des concepts clés à maîtriser
+    pour exploiter pleinement les fonctionnalités des structures en C.
+    Les structures anonymes offrent une façon pratique de regrouper des données connexes dans une structure sans avoir à
+    leur attribuer un nom spécifique. Elles permettent une organisation claire et concise des données,
+    améliorant ainsi la lisibilité et la maintenabilité du code. Cependant, il convient de les utiliser avec
+    parcimonie afin de ne pas complexifier inutilement la structure du code.

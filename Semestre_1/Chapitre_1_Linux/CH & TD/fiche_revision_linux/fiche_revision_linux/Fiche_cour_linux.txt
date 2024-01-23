@@ -1,0 +1,125 @@
+Linux et Commandes de Base
+
+__Sommaire :
+    • Commandes de navigation
+    • Commandes de fichiers et répertoires
+    • Commandes de compilation et d'exécution
+    • Options de compilation
+    • Options de liaison
+    • Options de débogage
+    • Définir des points d'arrêt
+    • Examiner l'état du programme
+    • Options d'optimisation
+
+__Commandes de navigation :
+
+    cd: Changer de répertoire
+    Exemple : cd Documents - se déplace dans le répertoire "Documents"
+
+    pwd : Afficher le répertoire de travail actuel
+    Exemple : / home / utilisateur /
+
+    ls : Lister les fichiers et répertoires
+    Exemple : ls - affiche les fichiers et répertoires du répertoire courant
+
+    mkdir : Créer un répertoire
+    Exemple : mkdir NouveauDossier - crée un nouveau répertoire appelé "NouveauDossier"
+
+
+__Commandes de fichiers et répertoires :
+
+    touch: Créer un fichier vide
+    Exemple : touch fichier.c - crée un nouveau fichier appelé "fichier.c"
+
+    cp : Copier un fichier ou un répertoire
+    Exemple : cp fichier.c dossier / -copie le fichier "fichier.c" dans le répertoire "dossier"
+
+    mv : Déplacer ou renommer un fichier ou un répertoire
+    Exemple : mv fichier.c nouveau_dossier / -déplace le fichier "fichier.c" dans le répertoire "nouveau_dossier"
+    Exemple : mv mon_fichier.txt nouveau_fichier.txt / -renomme le fichier "mon_fichier.txt" en "nouveau_fichier.txt"
+
+    rm : Supprimer un fichier
+    Exemple : rm fichier.c - supprime le fichier "fichier.c"
+
+
+__Commandes de compilation et d'exécution :
+
+    gcc : Compiler un programme C
+    Exemple : gcc fichier.c - o programme - compile le fichier "fichier.c" en un exécutable "programme"
+
+    . / : Exécuter un programme
+    Exemple : . / programme - exécute le programme "programme"
+
+    chmod : Modifier les permissions d'un fichier
+    Exemple : chmod + x programme - accorde les permissions d'exécution au fichier "programme"
+
+
+__Options de compilation :
+
+    -c : Compile le fichier source en un fichier objet(.o) sans l'éditer.
+    Exemple : gcc - c fichier.c
+
+    - o <nom_fichier> : Spécifie le nom de fichier de sortie après la compilation.
+    Exemple : gcc fichier.c - o programme
+
+    - Wall : Active tous les avertissements lors de la compilation.
+    Exemple : gcc - Wall fichier.c
+
+
+__Options de liaison :
+
+    -lm : Lie la bibliothèque mathématique standard(libm) lors de la liaison.
+    Exemple : gcc fichier.c - o programme - lm
+
+    - l<lib_name> : Lie une bibliothèque spécifiée lors de la liaison.Remplacez <lib_name> par le nom de la bibliothèque.
+    Exemple : gcc fichier.c - o programme - lmylib
+
+
+__Options de débogage :
+
+    -g : Inclut des informations de débogage dans le binaire généré, permettant l'utilisation d'un débogueur tel que GDB.
+    Exemple : gcc - g fichier.c - o programme
+
+    Pour lancer votre programme en mode débogage avec GDB, exécutez la commande suivante : gdb programme
+
+    Pour exécuter le programme, utilisez la commande run ou r.
+    Vous pouvez également spécifier des arguments de ligne de commande si votre programme en prend.
+
+        
+__Définir des points d'arrêt :
+
+    Vous pouvez définir des points d'arrêt dans votre programme pour suspendre l'exécution et examiner
+    l'état du programme à un moment donné. Utilisez la commande break ou b suivie d'un nom de fonction,
+    d'un numéro de ligne ou d'une adresse mémoire.
+    Exemple : (gdb) break main
+
+
+__Examiner l'état du programme :
+
+    Une fois que le programme s'arrête à un point d'arrêt, vous pouvez examiner les valeurs des variables,
+    appeler des fonctions, afficher des informations, etc.Voici quelques commandes utiles :
+
+    • print <variable>(ou p <variable>) : Affiche la valeur d'une variable.
+    
+    • backtrace(ou bt) : Affiche une trace de pile(stack trace) des appels de fonctions.
+ 
+    • step(ou s) : Exécute l'instruction suivante et entre dans les fonctions appelées.
+    
+    • next(ou n) : Exécute l'instruction suivante sans entrer dans les fonctions appelées.
+    
+    • continue (ou c) : Reprend l'exécution du programme jusqu'au prochain point d'arrêt.
+    
+    • Pour quitter GDB, utilisez la commande quit ou q.
+
+__Options d'optimisation :
+
+    - O0, -O1, -O2, -O3 : Active les niveaux d'optimisation respectifs (de pas d'optimisation à l'optimisation maximale).
+    Exemple : gcc - O2 fichier.c - o programme
+
+
+__Conclusion :
+    Linux offre une variété de commandes utiles pour la programmation en langage C.
+    Les commandes de navigation permettent de se déplacer dans la hiérarchie des répertoires.
+    Les commandes de fichiers et répertoires facilitent la création, la copie, le déplacement
+    et la suppression de fichiers.Enfin, les commandes de compilation et d'exécution sont
+    essentielles pour compiler et exécuter des programmes C.

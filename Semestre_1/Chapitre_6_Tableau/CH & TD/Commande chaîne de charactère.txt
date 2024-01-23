@@ -1,0 +1,15 @@
+strlen pour calculer la longueur d'une chaîne.
+
+strcpy pour copier une chaîne dans une autre.
+
+strcat pour concaténer 2 chaînes.
+
+strcmp pour comparer 2 chaînes.
+
+strchr pour rechercher un caractère.
+
+strpbrk pour rechercher le premier caractère de la liste.
+
+strstr pour rechercher une chaîne dans une autre.
+
+sprintf pour écrire dans une chaîne.

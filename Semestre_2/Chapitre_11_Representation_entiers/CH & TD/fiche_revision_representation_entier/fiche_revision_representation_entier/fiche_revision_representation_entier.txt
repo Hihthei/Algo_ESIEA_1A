@@ -1,0 +1,252 @@
+TITRE DU CHAPITRE : Représentation des entiers signés en machine
+
+Sommaire :
+
+• Introduction
+• Représentation des entiers non signés
+• Représentation naïve des entiers signés
+• Représentation en complément à deux
+• Conversion entre représentations
+• Opérations sur les entiers signés
+• Dépassement de capacité
+• Exemple pratique en langage C
+
+
+Introduction :
+
+    La représentation des entiers signés en machine est cruciale pour manipuler les valeurs numériques.
+    Ce chapitre explore diverses méthodes, en mettant l'accent sur la représentation en complément à deux.
+    Nous étudierons les conversions, les opérations arithmétiques, les dépassements de capacité,
+    et donnerons un exemple en langage C. Comprendre ces concepts est essentiel pour éviter les erreurs
+    et garantir des résultats cohérents.
+
+
+1_ Représentation des entiers non signés :
+
+    Les entiers non signés sont représentés directement en binaire.
+    Chaque bit représente une puissance de 2 et peut prendre les valeurs 0 ou 1.
+    Par exemple, un entier sur 8 bits peut représenter des valeurs de 0 à 255.
+
+    Celà pose des problèmes lors des opérations arithmétiques. En utilisant cette représentation,
+    des dépassements de capacité peuvent se produire, ce qui signifie que les valeurs peuvent dépasser
+    les limites du système de stockage.
+    De plus, des incohérences peuvent survenir dans les résultats, car les opérations entre des entiers
+    positifs et des entiers négatifs peuvent donner des résultats incorrects.
+
+
+2_ Représentation naïve des entiers signés :
+
+    La représentation naïve des entiers signés réserve le bit de poids fort pour indiquer le signe.
+    Par exemple, un entier sur 8 bits aurait un premier bit de signe suivi de sept bits de valeur.
+    Le bit de signe à 0 indiquerait un entier positif, et à 1 un entier négatif.
+    Cette représentation pose des problèmes lors des opérations arithmétiques.
+
+3_ Représentation en complément à deux :
+
+    La représentation en complément à deux est utilisée pour représenter les entiers signés.
+    Pour les entiers négatifs, le complément à deux de la valeur positive correspondante est pris.
+    Le complément à deux s'obtient en inversant tous les bits d'un nombre et en ajoutant 1.
+    Cette représentation permet d'utiliser les mêmes opérations arithmétiques que pour les entiers non signés.
+
+4_ Conversion entre représentations :
+
+    Pour convertir un entier signé représenté en complément à deux en entier non signé, il suffit de considérer
+    les bits comme une valeur non signée. Cependant, il est également important de savoir comment convertir
+    un entier non signé en entier signé représenté en complément à deux. Dans ce cas, il faut vérifier le bit de signe
+    et effectuer les ajustements nécessaires pour obtenir la représentation correcte de l'entier signé en complément à deux.
+
+
+5_ Opérations sur les entiers signés :
+
+    Les opérations arithmétiques sur les entiers signés se font en utilisant les mêmes opérations
+    que pour les entiers non signés. Les processeurs gèrent automatiquement les dépassements de
+    capacité et les résultats sont corrects dans le contexte de l'arithmétique en complément à deux.
+
+
+6_ Dépassement de capacité :
+
+    Lorsqu'une opération arithmétique sur les entiers signés dépasse leur capacité de représentation,
+    des résultats incorrects ou inattendus peuvent survenir. Pour mieux comprendre les conséquences,
+    des exemples concrets peuvent être utilisés pour illustrer ces dépassements de capacité.
+    De plus, des stratégies peuvent être mises en place pour éviter ou gérer ces situations problématiques.
+
+
+7_ Exemple pratique en langage C :
+
+    En langage C, les opérations binaires disponibles pour les entiers signés sont :
+
+    • ~a : non logique bit-à-bit
+        L'opérateur ~ effectue une inversion bit-à-bit de la valeur de a. Cela signifie que tous
+        les bits de a seront inversés, de 0 à 1 et de 1 à 0. Par exemple, si a = 5 (représenté en binaire comme 00000101),
+        alors ~a donnera -6 (représenté en binaire comme 11111010). Cet opérateur est utile pour effectuer des opérations
+        de complément, notamment lors de la manipulation de masques de bits ou de la création de valeurs complémentaires.
+
+        Exemple :
+            ```
+                    unsigned int complementBitAbit(unsigned int a)
+                        {
+                            return ~a;
+                        }
+            ```
+        Exercice :
+        Complétez la fonction suivante permettant de retourner l'opposé de l'entier n passé en paramètres
+        ```
+                int formerEntier (int n)
+                {
+                    return ~n + 1 ;
+                }
+        ```
+
+    La fonction complementBitAbit utilise l'opérateur de complément bit-à-bit (~) pour inverser tous les bits de l'entier a.
+    L'instruction return ~a applique le complément bit-à-bit à la valeur de l'entier a, ce qui a pour effet de transformer
+    tous les bits à 0 en bits à 1 et vice versa. Par exemple, si on appelle complementBitAbit(10), cela retournera l'entier
+    4294967285 (représenté en binaire comme 11111111111111111111111111110101), car tous les bits de l'entier 10 ont été inversés.
+
+
+    • a & b : et logique bit-à-bit
+
+        L'opérateur & effectue un "et" logique bit-à-bit entre les valeurs de a et b. Chaque bit du résultat sera
+        égal à 1 uniquement si les bits correspondants de a et b sont tous les deux égaux à 1. Par exemple, si a = 5
+        (représenté en binaire comme 00000101) et b = 3 (représenté en binaire comme 00000011), alors a & b donnera 1
+        (représenté en binaire comme 00000001). Cette opération est utilisée pour extraire ou tester des bits spécifiques
+        dans un mot binaire, ou pour effectuer des opérations de filtrage ou de masquage.
+
+    Exemple:
+        ```
+                unsigned int operationET(unsigned int a, unsigned int b)
+                    {
+                        return a & b;
+                    }
+        ```
+
+    La fonction operationET utilise l'opérateur "ET" logique bit-à-bit (&) pour effectuer l'opération
+    de "ET" entre les entiers a et b. L'instruction return a & b applique l'opérateur "ET" logique à
+    chaque paire de bits correspondants dans a et b, ce qui donne comme résultat un entier dont chaque bit est
+    le résultat de l'opération "ET" entre les bits correspondants de a et b. Par exemple, si on appelle operationET(13, 7),
+    cela retournera l'entier 5 (représenté en binaire comme 00000101), car le résultat de l'opération "ET" logique
+    entre 13 (représenté en binaire comme 00001101) et 7 (représenté en binaire comme 00000111) est 5.
+
+
+    • a | b : ou inclusif logique bit-à-bit
+
+        L'opérateur | effectue un "ou" inclusif logique bit-à-bit entre les valeurs de a et b.
+        Chaque bit du résultat sera égal à 1 si au moins l'un des bits correspondants de a ou b
+        est égal à 1. Par exemple, si a = 5 (représenté en binaire comme 00000101) et b = 3 (représenté en binaire comme 00000011),
+        alors a | b donnera 7 (représenté en binaire comme 00000111). Cette opération permet de combiner
+        ou d'activer certains bits spécifiques dans un mot binaire.
+
+    Exemple :
+    ```
+            unsigned int operationOU(unsigned int a, unsigned int b)
+                {
+                    return a | b;
+                }
+    ```
+
+    La fonction operationOU utilise l'opérateur "OU" inclusif logique bit-à-bit (|) pour effectuer
+    l'opération de "OU" inclusif entre les entiers a et b. L'instruction return a | b applique
+    l'opérateur "OU" inclusif à chaque paire de bits correspondants dans a et b, ce qui donne comme résultat
+    un entier dont chaque bit est le résultat de l'opération "OU" inclusif entre les bits correspondants de a et b.
+    Par exemple, si on appelle operationOU(5, 3), cela retournera l'entier 7 (représenté en binaire comme 00000111),
+    car le résultat de l'opération "OU" inclusif entre 5 (représenté en binaire comme 00000101) et
+    3 (représenté en binaire comme 00000011) est 7.
+
+
+    • a ^ b : ou exclusif logique bit-à-bit
+
+    L'opérateur ^ effectue un "ou" exclusif logique bit-à-bit entre les valeurs de a et b.
+    Chaque bit du résultat sera égal à 1 uniquement si les bits correspondants de a et b sont différents
+    (un bit est égal à 1 et l'autre à 0). Par exemple, si a = 5 (représenté en binaire comme 00000101)
+    et b = 3 (représenté en binaire comme 00000011), alors a ^ b donnera 6 (représenté en binaire comme 00000110).
+    Cette opération est utilisée pour effectuer des opérations de manipulation ou de permutation de bits spécifiques.
+
+    Exemple :
+    ```
+            unsigned int operationOUExclusif(unsigned int a, unsigned int b)
+                {
+                    return a ^ b;
+                }
+    ```
+
+    La fonction operationOUExclusif utilise l'opérateur "OU" exclusif logique bit-à-bit (^) pour effectuer
+    l'opération de "OU" exclusif entre les entiers a et b. L'instruction return a ^ b applique l'opérateur "OU" exclusif
+    à chaque paire de bits correspondants dans a et b, ce qui donne comme résultat un entier dont chaque bit
+    est le résultat de l'opération "OU" exclusif entre les bits correspondants de a et b. Par exemple, si on appelle
+    operationOUExclusif(5, 3), cela retournera l'entier 6 (représenté en binaire comme 00000110),
+    car le résultat de l'opération "OU" exclusif entre 5 (représenté en binaire comme 00000101) et
+    3 (représenté en binaire comme 00000011) est 6.
+
+
+    • a << n : décalage logique à gauche de a de n positions
+
+    L'opérateur << effectue un décalage logique à gauche de la valeur de a de n positions.
+
+    Cela signifie que les bits de a seront déplacés vers la gauche de n positions, en insérant des zéros à
+    droite pour remplacer les bits décalés. Supposons que la valeur de a soit 6 (représentée en binaire comme 00000110)
+    et que n soit égal à 2. L'opération a << n décalera les bits de a de deux positions vers la gauche, ce qui donne :
+
+    Exemple :
+    ```
+        Avant le décalage :
+        a = 00000110
+
+        Après le décalage :
+        resultat = 00011000
+    ```
+
+    Le résultat obtenu est 24, car les bits de a ont été décalés de deux positions vers la gauche,
+    et les positions vacantes ont été remplies par des zéros.
+    Le décalage logique à gauche est souvent utilisé pour effectuer des multiplications rapides par des puissances de 2.
+    Par exemple, si vous avez besoin de multiplier un nombre par 8, vous pouvez utiliser l'opération a << 3 (puisque 2^3 = 8)
+    pour obtenir le même résultat plus efficacement.
+
+    Exemple :
+    ```
+        unsigned int formerEntier(int n)
+            {
+                return 1 << n;
+            }
+    ```
+
+    La fonction formerEntier utilise l'opérateur de décalage logique à gauche (<<)
+    pour créer un entier qui a tous les bits à 0, sauf le n-ième bit qui est mis à 1.
+    L'instruction return 1 << n effectue un décalage logique à gauche de la valeur 1 de n positions,
+    ce qui a pour effet de placer le bit à 1 à la position n et de mettre tous les autres bits à 0.
+    Par exemple, si on appelle formerEntier(3), cela retournera l'entier 8 (représenté en binaire comme 00001000),
+    car le 4e bit (à partir de la droite) est mis à 1, tandis que tous les autres bits sont à 0.
+
+    Exemple :
+    On suppose que la variable x est de type unsigned char. Ordonnez les éléments suivants afin de former l'entier 5.
+    x = (2 << 1 ) | 1
+
+    • 2 << 1 : L'opérateur de décalage à gauche (<<) décale les bits de l'entier 2 d'une position vers la gauche.
+    Le nombre 2 en binaire est représenté par 10. En le décalant à gauche d'une position, on obtient 100,
+    qui est l'équivalent binaire de 4. Ainsi, cette opération donne le résultat 4.
+
+    • 4 | 1 : L'opérateur logique OR (|) réalise une opération de OU bit à bit entre les nombres 4 et 1.
+    En binaire, 4 est représenté par 100 et 1 par 001. L'opération de OU donne 101, qui est l'équivalent
+    binaire de 5. Ainsi, cette opération donne le résultat final 5.
+
+    • a + b : addition de a et b
+
+    • a - b : soustraction de b à a
+    
+    • a * b : multiplication de a par b
+    
+    • a / b : division de a par b
+    
+    • a % b : reste de la division de a par b (modulo)
+
+
+    Il est essentiel de faire attention aux dépassements de capacité lors de l'utilisation de ces
+    opérations sur les entiers signés. Les dépassements de capacité peuvent conduire à des résultats
+    imprévisibles et indésirables.
+
+__Conclusion :
+
+    La représentation des entiers signés en machine est essentielle pour la manipulation et les opérations sur ces valeurs.
+    La représentation en complément à deux offre une méthode efficace pour représenter les entiers signés,
+    permettant l'utilisation des mêmes opérations arithmétiques que pour les entiers non signés.
+    Il est crucial de comprendre les concepts de représentation des entiers signés, les conversions
+    entre les différentes représentations, les opérations arithmétiques et les limitations liées aux dépassements de capacité.
+    En utilisant ces connaissances, on peut manipuler efficacement et correctement les entiers signés en langage C.

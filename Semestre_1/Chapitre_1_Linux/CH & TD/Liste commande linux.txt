@@ -1,0 +1,14 @@
+pwd // Savoir dans quel dossier on se trouve actuellement
+cd .. // se déplacer au dossier parent
+cd ~ | cd | cd home/ // se déplacer dans le répertoire d'accueil
+cd NomDuFichier // se déplacer dans le fichier NomDuFichier
+touch // créer un fichier
+mkdir // créer un dossier
+rmdir // supprimer un dossier
+ls // liste des fichiers et dossier
+mv NomDuFichier Destination // déplacer le fichier NomDuFichier dans le dossier Destination
+mv NomDuFichier NouveauNomDuFichier // renomme le fichier NomDuFichier en NouveauNomDuFichier
+cp NomDuFichier Destination // Copie le fichier NomDuFichier ans le dossier Destination
+man NomDeLaCommande // Donne toutes les informations à savoir sur la commande NomDeLaCommand
+gcc NomDuProgramme -o NomDuProgrammeAprèsCompilation // Compile le programme et lui donne un nom
+./ 

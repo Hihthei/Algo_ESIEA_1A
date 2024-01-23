@@ -1,0 +1,144 @@
+TITRE DU CHAPITRE : Débogage en C
+
+Sommaire :
+
+• 1. Introduction au débogage
+• 2. Outils de débogage en C
+		- 2.1 Compilateur avec informations de débogage
+		- 2.2 GDB (GNU Debugger)
+
+• 3. Principales commandes de débogage en GDB
+		- 3.1 Démarrer et arrêter le débogage
+		- 3.2 Positionnement des points d'arrêt
+		- 3.3 Exécution pas à pas
+		- 3.4 Affichage des valeurs des variables
+		- 3.5 Modification des valeurs des variables
+		- 3.6 Gestion des appels de fonctions
+		- 3.7 Analyse de la pile d'appels (stack trace)
+		- 3.8 Gestion des exceptions et des signaux
+		- 3.9 Gestion de la mémoire
+
+• 4. Techniques de débogage en C
+		- 4.1 Utilisation de printf()
+		- 4.2 Analyse de l'erreur de segmentation (Segmentation Fault)
+		- 4.3 Utilisation d'assert()
+		- 4.4 Analyse de la trace de débogage (Stack Trace)
+		- 4.5 Utilisation de Valgrind pour la détection des fuites de mémoire
+
+• 5. Bonnes pratiques de débogage
+		- 5.1 Comment bien isoler le problème
+		- 5.2 Documentation et recherche d'informations
+		- 5.3 Écrire des tests unitaires
+		- 5.4 Utilisation de systèmes de gestion de versions
+
+• 6. Conclusion
+
+
+1_ Introduction au débogage :
+
+	Le débogage est le processus de localisation et de correction des erreurs dans un programme informatique.
+	Il permet de trouver et de résoudre les bogues (bugs) qui entraînent un comportement incorrect ou
+	des résultats inattendus dans le code. Le débogage est essentiel pour assurer la fiabilité et la qualité des programmes en C.
+
+
+2_ Outils de débogage en C :
+
+	2.1	Compilateur avec informations de débogage :
+		Les compilateurs C tels que GCC fournissent des options pour inclure des informations de débogage dans le fichier exécutable.
+		Ces informations permettent de retracer l'exécution du programme et de localiser les erreurs plus facilement.
+
+	2.2	GDB (GNU Debugger) :
+		GDB est un puissant outil de débogage en ligne de commande pour les programmes en C. Il permet d'exécuter le programme pas à pas,
+		d'inspecter et de modifier les variables, de placer des points d'arrêt, d'analyser la pile d'appels et bien plus encore.
+
+
+3_ Principales commandes de débogage en GDB :
+
+	3.1	Démarrer et arrêter le débogage :
+		gdb <executable> : Lance GDB et charge l'exécutable.
+		run ( ou r ) : Démarre l'exécution du programme.
+		quit ( ou q ) : Quitte GDB.
+
+	3.2	Positionnement des points d'arrêt :
+		break <nom_fonction> : Place un point d'arrêt au début de la fonction.
+		break <nom_fichier>:<num_ligne> : Place un point d'arrêt à une ligne spécifique du fichier.
+		delete <num_point> : Supprime un point d'arrêt spécifié.
+
+	3.3	Exécution pas à pas :
+		step : Exécute une instruction et entre dans les fonctions appelées.
+		next : Exécute une instruction sans entrer dans les fonctions appelées.
+		finish : Exécute le programme jusqu'à la fin de la fonction courante.
+
+	3.4	Affichage des valeurs des variables :
+		print <nom_variable> : Affiche la valeur d'une variable.
+		display <nom_variable> : Affiche la valeur de la variable à chaque arrêt.
+		info locals : Affiche les variables locales de la fonction courante.
+
+	3.5	Modification des valeurs des variables :
+		set variable <nom_variable> = <valeur> : Modifie la valeur d'une variable.
+
+	3.6 Gestion des appels de fonctions :
+		backtrace : Affiche la pile d'appels (stack trace).
+		up : Remonte d'une fonction dans la pile d'appels.
+		down : Descend d'une fonction dans la pile d'appels.
+
+	3.7 Analyse de la pile d'appels (stack trace) :
+		backtrace : Affiche la pile d'appels complète.
+
+	3.8 Gestion des exceptions et des signaux :
+		catch throw : Arrête l'exécution lorsqu'une exception est lancée.
+		catch signal <nom_signal> : Arrête l'exécution lorsqu'un signal spécifié est reçu.
+
+	3.9 Gestion de la mémoire :
+		info malloc : Affiche les informations sur les allocations mémoire dynamiques.
+		info leaks : Affiche les fuites de mémoire potentielles.
+
+
+4_ Techniques de débogage en C :
+
+	4.1 Utilisation de printf() :
+		L'utilisation de printf() permet d'afficher des informations à des points spécifiques du programme pour vérifier les valeurs
+		des variables ou suivre l'exécution.
+	
+	4.2 Analyse de l'erreur de segmentation (Segmentation Fault) :
+		L'erreur de segmentation est souvent causée par un accès incorrect à la mémoire. L'analyse de l'erreur de segmentation
+		peut être effectuée en examinant l'adresse mémoire invalide et en identifiant la cause sous-jacente.
+	
+	4.3 Utilisation d'assert() :
+		L'instruction assert() permet de vérifier des conditions pendant l'exécution du programme. Si une condition échoue,
+		elle affiche un message d'erreur et termine l'exécution du programme.
+	
+	4.4 Analyse de la trace de débogage (Stack Trace) :
+		La trace de débogage est une liste des appels de fonctions en cours d'exécution au moment où une erreur se produit.
+		Elle peut aider à identifier la séquence d'appels de fonctions qui a conduit à l'erreur.
+	
+	4.5 Utilisation de Valgrind pour la détection des fuites de mémoire :
+		Valgrind est un outil puissant pour détecter les fuites de mémoire et les erreurs d'accès à la mémoire.
+		Il permet d'analyser le programme et de signaler les problèmes potentiels liés à la gestion de la mémoire.
+
+
+5_ Bonnes pratiques de débogage :
+
+	5.1 Comment bien isoler le problème :
+		Il est important de restreindre la portée du problème en identifiant les parties spécifiques du code qui posent problème.
+		Cela permet de réduire la zone de recherche et de se concentrer sur les sections pertinentes du code.
+	
+	5.2 Documentation et recherche d'informations :
+		La documentation officielle, les forums en ligne et les ressources spécialisées peuvent fournir des informations précieuses
+		sur les problèmes courants et les meilleures pratiques de débogage.
+	
+	5.3 Écrire des tests unitaires :
+		L'écriture de tests unitaires permet de vérifier le comportement attendu des différentes parties du code. Les tests unitaires
+		peuvent aider à identifier les erreurs et à isoler les problèmes plus rapidement.
+	
+	5.4 Utilisation de systèmes de gestion de versions :
+		L'utilisation de systèmes de gestion de versions, tels que Git, permet de garder une trace des modifications apportées au code
+		et de revenir à des versions antérieures en cas de besoin. Cela peut faciliter le processus de débogage en permettant de revenir à un état fonctionnel connu.
+
+
+6_ Conclusion :
+
+	Le débogage en C est une compétence essentielle pour les développeurs. Il nécessite l'utilisation d'outils de débogage tels que GDB,
+	ainsi que la compréhension des principales commandes et techniques de débogage. En suivant les bonnes pratiques de débogage,
+	comme l'isolation du problème, la recherche d'informations et l'écriture de tests unitaires, il est possible de résoudre efficacement
+	les problèmes dans le code et d'améliorer la fiabilité des programmes en C.

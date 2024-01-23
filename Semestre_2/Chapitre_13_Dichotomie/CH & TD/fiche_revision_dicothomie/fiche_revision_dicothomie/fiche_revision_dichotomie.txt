@@ -1,0 +1,129 @@
+﻿TITRE DU CHAPITRE : Dicotomie et Tri Rapide
+
+Sommaire :
+
+• Qu'est-ce que la dicotomie et ses utilisations
+• Qu'est-ce que le tri rapide et comparaison avec d'autres algorithmes de tri
+• Algorithme du tri rapide
+• Algorithme de Hoare
+
+Introduction :
+
+    Le chapitre sur la dicotomie et le tri rapide explore deux concepts fondamentaux en informatique :
+    la recherche efficace dans une liste triée et le tri rapide d'une liste. La dicotomie permet
+    de trouver rapidement un élément dans une liste triée, tandis que le tri rapide est un algorithme de tri efficace.
+    Cette fiche de révision présentera ces deux concepts, en mettant l'accent sur leur utilité, leur fonctionnement
+    et leurs particularités.
+
+
+1_ Qu'est-ce que la dicotomie et ses utilisations :
+
+    La dicotomie, également connue sous le nom de recherche binaire, est un algorithme de recherche efficace
+    utilisé pour trouver rapidement un élément dans une liste triée. Son principe repose sur la division récursive
+    de la liste en deux parties égales, permettant de réduire le champ de recherche à chaque étape.
+
+    L'algorithme de recherche dichotomique consiste à diviser le tableau en deux parties à chaque itération,
+    en comparant l'élément recherché avec l'élément situé au milieu du tableau. Si l'élément est égal à l'élément du milieu,
+    la recherche est terminée et on obtient l'indice de l'élément recherché. Si l'élément est inférieur à l'élément du milieu,
+    la recherche se poursuit dans la moitié inférieure du tableau. Si l'élément est supérieur à l'élément du milieu,
+    la recherche se poursuit dans la moitié supérieure du tableau. Ce processus est répété jusqu'à ce que l'élément recherché
+    soit trouvé ou que les limites de la recherche se croisent.
+
+    Exemple :
+    ```
+            // Recherche de l'élément 18 dans un tableau trié
+
+            int tableau[] = {2, 5, 8, 12, 16, 18, 22, 25, 30};
+            int taille = sizeof(tableau) / sizeof(tableau[0]);
+            int elementRecherche = 18;
+
+            int debut = 0;
+            int fin = taille - 1;
+            int milieu;
+            int indiceElement = -1;
+
+            while (debut <= fin)
+            {
+                milieu = (debut + fin) / 2;
+
+                if (tableau[milieu] == elementRecherche) {
+                    indiceElement = milieu;
+                    break;
+                }
+                else if (tableau[milieu] < elementRecherche)
+                    debut = milieu + 1;
+                else
+                    fin = milieu - 1;
+            }
+
+            // Affichage du résultat de la recherche
+            if (indiceElement != -1)
+                printf("L'élément 18 a été trouvé à l'indice %d.\n", indiceElement);
+            else
+                printf("L'élément 18 n'a pas été trouvé dans le tableau.\n");
+    ```
+
+    La dicotomie est couramment utilisée dans des situations où la recherche efficace dans une liste triée est nécessaire,
+    comme dans les tableaux triés, les arbres de recherche binaires ou les bases de données indexées.
+
+
+2_ Qu'est-ce que le tri rapide et comparaison avec d'autres algorithmes de tri :
+
+    Le tri rapide, également connu sous le nom de quicksort, est un algorithme de tri efficace et largement utilisé.
+    Il utilise une approche de divide-and-conquer (diviser pour régner) pour trier les éléments d'une liste.
+    Comparé à d'autres algorithmes de tri, il offre une bonne performance dans la plupart des cas,
+    bien qu'il puisse présenter une complexité temporelle maximale quadratique dans le pire des cas.
+
+
+3_ Algorithme du tri rapide :
+
+    ```
+            partitionner(T, G, D):
+            pivot = T[G]
+            gauche = G
+            droite = D
+    
+            Tant que gauche ≠ droite:
+                Si gauche < droite:
+                    Si T[gauche] > T[droite]:
+                        Échanger T[gauche] et T[droite]
+                        Échanger gauche et droite
+                        Incrémenter droite
+                    Si T[gauche] ≤ T[droite]:
+                        Décrémenter droite
+                Sinon si gauche > droite:
+                    Si T[gauche] < T[droite]:
+                        Échanger T[gauche] et T[droite]
+                        Échanger gauche et droite
+                        Décrémenter droite
+                    Si T[gauche] ≥ T[droite]:
+                        Incrémenter droite
+    
+            Retourner gauche
+
+        triRapide(T, G, D):
+            indice = partitionner(T, G, D)
+
+            Si indice > G:
+                triRapide(T, G, indice - 1)
+            Si D > indice:
+                triRapide(T, indice + 1, D)
+    ```
+
+    Cet algorithme utilise une fonction de partitionnement pour diviser le tableau en deux parties,
+    et ensuite récursivement trie les sous-tableaux résultants jusqu'à ce que chaque sous-tableau
+    ne contienne qu'un seul élément.
+
+
+4_ Algorithme de Hoare :
+    L'algorithme de Hoare, également connu sous le nom de partition de Hoare, est une méthode populaire de partitionnement
+    utilisée dans le tri rapide. Il utilise deux indices, généralement appelés "i" et "j", qui se déplacent l'un vers l'autre
+    à travers la liste à partitionner. L'algorithme de Hoare est considéré comme plus efficace que d'autres méthodes de
+    partitionnement, car il effectue généralement moins de comparaisons et d'échanges d'éléments.
+
+
+Conclusion :
+    La dicotomie et le tri rapide sont des concepts essentiels en informatique pour la recherche efficace dans une liste
+    triée et le tri rapide d'une liste. La dicotomie permet de trouver rapidement un élément, tandis que le tri rapide
+    offre un algorithme de tri performant. En comprenant leur utilité, leur fonctionnement et en étudiant les algorithmes
+    associés, on peut exploiter pleinement leur potentiel dans la résolution de problèmes en informatique.

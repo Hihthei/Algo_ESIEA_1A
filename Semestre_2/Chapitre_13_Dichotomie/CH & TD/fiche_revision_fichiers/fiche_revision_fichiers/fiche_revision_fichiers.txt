@@ -1,0 +1,85 @@
+TITRE DU CHAPITRE : Gestion des fichiers en C
+
+Sommaire :
+
+• Introduction aux fichiers en C
+• Ouverture et fermeture de fichiers
+• Lecture de fichiers
+	- Lecture caractère par caractère
+	- Lecture ligne par ligne
+	- Lecture bloc par bloc
+• Écriture dans un fichier
+	- Écriture caractère par caractère
+	- Écriture ligne par ligne
+	- Écriture bloc par bloc
+• Positionnement dans un fichier
+	- Déplacement absolu
+	- Déplacement relatif
+• Manipulation des fichiers binaire
+• Binaire
+	- Lecture binaire
+	- Écriture binaire
+• Gestion des erreurs de fichier
+
+Introduction aux fichiers en C :
+
+Les fichiers sont des entités externes utilisées pour stocker et récupérer des données de manière persistante.
+En C, la gestion des fichiers se fait à l'aide de fonctions spécifiques permettant d'ouvrir, lire, écrire et
+fermer des fichiers.
+
+
+1_ Ouverture et fermeture de fichiers :
+
+	fopen() : Permet d'ouvrir un fichier en mode lecture, écriture ou ajout.
+	fclose() : Permet de fermer un fichier précédemment ouvert.
+
+
+2_ Lecture de fichiers :
+
+	2_1 Lecture caractère par caractère :
+		fgetc() : Lit un caractère à la fois depuis un fichier.
+	2_2 Lecture ligne par ligne :
+		fgets() : Lit une ligne entière depuis un fichier.
+	2_3 Lecture bloc par bloc :
+		fread() : Lit un bloc de données depuis un fichier.
+
+
+3_ Écriture dans un fichier :
+
+	3_1 Écriture caractère par caractère :
+		fputc() : Écrit un caractère dans un fichier.
+	3_2 Écriture ligne par ligne :
+		fputs() : Écrit une ligne dans un fichier.
+	3_3 Écriture bloc par bloc :
+		fwrite() : Écrit un bloc de données dans un fichier.
+
+
+4_ Positionnement dans un fichier :
+
+	4_1 Déplacement absolu :
+		fseek() : Déplace le curseur de lecture/écriture à une position spécifique dans le fichier.
+		Fonction rewind() : Replace le curseur au début du fichier.
+	4_2 Déplacement relatif :
+		ftell() : Retourne la position actuelle du curseur dans le fichier.
+
+
+5_ Binaires :
+
+	5_1 Lecture et écriture binaire :
+		fread() et fwrite() : Permettent de lire et d'écrire des données binaires depuis/depuis un fichier.
+	5_2 Structures et fichiers binaires :
+		Possibilité de stocker des structures complexes dans des fichiers binaires.
+
+
+6_ Gestion des erreurs de fichier :
+
+	Vérification des erreurs de lecture/écriture :
+		Utilisation de la valeur de retour des fonctions de lecture/écriture pour vérifier les erreurs.
+		perror() : Affiche un message d'erreur détaillé correspondant au code d'erreur actuel.
+
+
+Conclusion :
+
+	La gestion des fichiers en C est essentielle pour manipuler des données persistantes.
+	En connaissant les principales fonctions et les différents modes de lecture/écriture,
+	vous serez en mesure d'effectuer des opérations efficaces sur les fichiers dans vos programmes C.

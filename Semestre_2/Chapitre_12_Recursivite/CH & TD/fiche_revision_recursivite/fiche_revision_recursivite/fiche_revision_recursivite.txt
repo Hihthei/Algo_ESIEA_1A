@@ -1,0 +1,212 @@
+﻿TITRE DU CHAPITRE : La récursivité en langage C
+
+Sommaire:
+• 1. Introduction à la récursivité
+    - 1.1 Définition d'une fonction récursive
+    - 1.2 Les deux éléments essentiels d'une fonction récursive
+    - 1.3 Exemple de calcul de la factorielle en utilisant la récursivité
+
+• 2. Récursivité simple
+    - 2.1 Définition d'une fonction récursive simple
+    - 2.2 Processus de descente d'indice et de remontée d'indice
+    - 2.3 Exemple de récursivité simple : calcul de la somme des entiers jusqu'à un nombre donné
+
+• 3. Récursivité multiple
+    - 3.1 Définition d'une fonction récursive multiple
+    - 3.2 La croissance exponentielle du nombre d'appels récursifs
+    - 3.3 Consommation de mémoire et temps d'exécution
+    - 3.4 Précautions à prendre pour éviter des temps d'exécution excessifs
+    - 3.5 Exemple de récursivité multiple : génération de suites de Fibonacci
+
+• 4. Récursivité mutuelle
+    - 4.1 Définition de la récursivité mutuelle
+    - 4.2 Utilisation de la récursivité mutuelle dans les calculs de suite
+    - 4.3 Schéma d'appels récursifs entre deux fonctions
+
+
+Introduction :
+
+    La récursivité est un paradigme de programmation qui permet de simplifier la résolution de certains algorithmes,
+    notamment lors du parcours d'arbres et de graphes. Ce cours vise à vous familiariser avec les
+    différents types de récursivité en langage C et à comprendre leurs implications sur la mémoire et les performances.
+
+
+1_ Introduction à la récursivité :
+
+    1.1 Définition d'une fonction récursive :
+        Une fonction récursive est une fonction qui s'appelle elle-même. Elle comporte au moins un
+        appel récursif et une condition d'arrêt. L'objectif d'une fonction récursive est de mettre à jour
+        des variables pour calculer un résultat, qui est retourné lorsque la condition d'arrêt est atteinte.
+
+    1.2 Les deux éléments essentiels d'une fonction récursive :
+        - L'appel récursif: C'est l'appel de la fonction à l'intérieur de sa propre définition.
+        Il permet de résoudre une sous-partie du problème.
+
+        - La condition d'arrêt: C'est la condition qui indique quand la fonction doit arrêter
+        les appels récursifs et retourner un résultat.
+
+    1.3 Exemple de calcul de la factorielle en utilisant la récursivité :
+        La factorielle peut être calculée de manière récursive en utilisant la définition mathématique
+        n! = n * (n-1)! avec une condition d'arrêt pour n=0 où le résultat est 1.
+        
+        Exemple :
+            ```
+                    int factorial(int n)
+                    {
+                        // Condition d'arrêt
+                        if (n == 0)
+                            return 1;
+
+                        // Appel récursif
+                        return n * factorial(n-1);
+                    }
+            ```
+
+
+2_ Récursivité simple :
+
+    2.1 Définition d'une fonction récursive simple:
+        Une fonction récursive simple est une fonction récursive qui ne contient qu'un unique appel à elle-même.
+        Elle suit un schéma de descente d'indice pour décrire l'opération à calculer au fur et à mesure des appels,
+        suivi d'une remontée d'indice pour effectuer le calcul et retourner le résultat.
+
+    2.2 Processus de descente d'indice et de remontée d'indice:
+        La descente d'indice permet de diviser le problème en sous-problèmes de taille réduite,
+        tandis que la remontée d'indice permet d'effectuer les calculs sur ces sous-problèmes et de combiner les résultats.
+
+    2.3 Exemple de récursivité simple : calcul de la somme des entiers jusqu'à un nombre donné:
+        Voici un exemple d'implémentation récursive en langage C pour calculer la somme des entiers
+        jusqu'à un nombre donné.
+
+        Exemple :
+            ```
+                    int sum(int n)
+                    {
+                        // Condition d'arrêt
+                        if (n == 0)
+                            return 0;
+
+                        // Appel récursif et somme
+                        return n + sum(n-1);
+                    }
+            ```
+
+
+3_ Récursivité multiple :
+
+    3.1 Définition d'une fonction récursive multiple:
+        Une fonction récursive multiple est une fonction qui réalise plusieurs appels récursifs à elle-même.
+        Chaque appel génère au moins deux nouveaux appels récursifs, ce qui entraîne une croissance exponentielle
+        du nombre d'appels.
+
+    3.2 La croissance exponentielle du nombre d'appels récursifs:
+        La récursivité multiple peut conduire à une consommation de mémoire relativement modérée,
+        mais elle peut entraîner des temps d'exécution très longs en raison du grand nombre d'appels récursifs.
+        Il est donc important de prendre en compte la taille des données traitées pour éviter des temps d'exécution excessifs.
+
+    3.3 Consommation de mémoire et temps d'exécution:
+        Chaque appel récursif entraîne une augmentation de la consommation de mémoire,
+        notamment en déclarant à nouveau les paramètres de la fonction. En comparaison,
+        une fonction itérative n'a pas besoin de redéclarer ses paramètres plusieurs fois.
+        Il est donc nécessaire d'évaluer la taille des données à traiter pour s'assurer que le calcul
+        pourra être réalisé en un temps raisonnable.
+
+    3.4 Précautions à prendre pour éviter des temps d'exécution excessifs:
+        Lors de l'utilisation de la récursivité multiple, il est important de prendre des précautions pour éviter
+        des temps d'exécution excessifs. Cela peut inclure la mise en place de conditions d'arrêt appropriées,
+        l'utilisation de techniques de memoization pour éviter des calculs redondants, ou encore
+        l'optimisation de l'algorithme lui-même.
+
+    3.5 Exemple de récursivité multiple : génération de suites de Fibonacci:
+        La génération de la suite de Fibonacci est un exemple classique de récursivité multiple.
+        Voici un exemple d'implémentation en langage C :
+
+        Exemple :
+        ```
+                int fibonacci(int n)
+                    {
+                        // Conditions d'arrêt
+                        if (n == 0)
+                            return 0;
+
+                        if (n == 1)
+                            return 1;
+
+                        // Appels récursifs et somme des résultats
+                        return fibonacci(n-1) + fibonacci(n-2);
+                    }
+        ```
+
+
+4_ Récursivité mutuelle :
+    4.1 Définition de la récursivité mutuelle:
+        La récursivité mutuelle se produit lorsque deux fonctions s'appellent l'une l'autre.
+        Ce type de récursivité est souvent utilisé dans les calculs de suite ou pour modéliser
+        l'évolution de populations interdépendantes.
+
+    4.2 Utilisation de la récursivité mutuelle dans les calculs de suite:
+        La récursivité mutuelle permet de définir des calculs de suite où chaque fonction dépend
+        de la valeur calculée par l'autre fonction. Cela permet de modéliser des situations où deux processus
+        ou entités interagissent de manière récursive.
+
+    4.3 Schéma d'appels récursifs entre deux fonctions:
+        Le schéma d'appels récursifs entre deux fonctions récursives mutuelles suit une structure du type f1 appelle f2,
+        qui appelle f1, qui appelle f2, et ainsi de suite. Il est important de gérer correctement les conditions d'arrêt
+        pour éviter des boucles infinies.
+
+
+5_ Exemple d'un état de la mémoire :
+
+    - Code :
+
+        #include <stdio.h>
+
+        int recursiveFunction(int n) {
+            if (n <= 0) {
+                return 0;
+            } else {
+                int result = n + recursiveFunction(n - 1);
+                return result;
+            }
+        }
+
+        int main() {
+            int input = 5;
+            int output = recursiveFunction(input);
+    
+            printf("Output: %d\n", output);
+    
+            return 0;
+        }
+
+    - État de la mémoire :
+
+    ╔═══════════════════════════════════════════════════════════════════════╗
+    ║                État de la mémoire - Exécution récursive               ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║  Appel récursif / Étape  ║               Variables                    ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(5)  ║ n = 5, result = 5 + recursiveFunction(4)   ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(4)  ║ n = 4, result =  4 + recursiveFunction(3)  ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(3)  ║ n = 3, result = 3 + recursiveFunction(2)   ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(2)  ║ n = 2, result = 2 + recursiveFunction(1)   ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(1)  ║ n = 1, result = 1 + recursiveFunction(0)   ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    recursiveFunction(0)  ║ n = 0, result = 0                          ║
+    ╠══════════════════════════╬════════════════════════════════════════════╣
+    ║    Résultat final        ║   result = 5 + (4 + (3 + (2 + (1 + 0))))   ║
+    ║                          ║   result = 15                              ║
+    ╚══════════════════════════╩════════════════════════════════════════════╝
+
+
+Conclusion :
+    La récursivité est un outil puissant en programmation permettant de résoudre certains problèmes de manière
+    élégante et concise. Cependant, il faut faire attention à la consommation de mémoire et aux temps d'exécution,
+    notamment lors de l'utilisation de la récursivité multiple. Il est important de choisir le type de récursivité
+    adapté au problème et de prendre en compte les précautions nécessaires pour garantir des performances optimales.
+    En comprenant les concepts de base de la récursivité et en pratiquant avec des exemples concrets,
+    vous serez en mesure d'utiliser efficacement la récursivité en langage C.

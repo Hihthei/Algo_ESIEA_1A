@@ -1,0 +1,19 @@
+L 3 4 60 543
+char * donnee[x] = [L,_,3,6,_,4,6,7,_,4,'\n',L,_];
+
+p = -1;
+nouveautableau[];
+for x in range (0, nb_cara)
+	int case = atoi(tab_donne)
+	if case != chiffre
+		precedent = case
+		brek
+	if chiffre & precedent == espace
+		++p;
+		nouveautableau[p] = atoi;
+		prec = tonchiffre
+	if chiffre & precedent est un chiffre
+		nouveautableau[p]*=10;
+		tab + mes couilles;
+
+	
