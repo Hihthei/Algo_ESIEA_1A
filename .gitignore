@@ -15,11 +15,11 @@
 *.h.gch
 *.exe
 
-*\SDL2
-*\SDL2_image
-*\SDL2_mixer
-*\SDL2_ttf
-*\Assets
+*SDL2/
+*SDL2_image/
+*SDL2_mixer/
+*SDL2_ttf/
+*Assets/
 
 *.png
 *.jpg
@@ -27,3 +27,7 @@
 *.webp
 *.wav
 *.psd
+
+*.git
+*.gitignore
+*.gitattributes
